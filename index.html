@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thierry Laguerre — Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#1E2D5A; --teal:#0D7377; --green:#14A085; --orange:#E8813A;
+      --light:#F4F7FB; --white:#FFFFFF; --gray:#64748B; --border:#E2E8F0; --text:#1A202C;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',sans-serif; background:var(--light); color:var(--text); line-height:1.6; }
+
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(30,45,90,0.97); backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 2.5rem; height:60px;
+    }
+    .nav-brand { font-family:'DM Mono',monospace; font-size:0.85rem; color:var(--green); letter-spacing:0.05em; }
+    .nav-links { display:flex; gap:2rem; }
+    .nav-links a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.85rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--white); }
+
+    .hero {
+      min-height:100vh;
+      background:linear-gradient(135deg,var(--navy) 0%,#0D2447 60%,#0A1A35 100%);
+      display:flex; align-items:center; padding:80px 2.5rem 4rem; position:relative; overflow:hidden;
+    }
+    .hero::before {
+      content:''; position:absolute; top:-40%; right:-20%;
+      width:700px; height:700px; border-radius:50%;
+      background:radial-gradient(circle,rgba(13,115,119,0.15) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .hero-inner { max-width:860px; margin:0 auto; position:relative; z-index:1; }
+    .hero-label { font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--green); letter-spacing:0.12em; margin-bottom:1.5rem; }
+    .hero h1 { font-size:clamp(2.4rem,5vw,3.8rem); font-weight:700; color:var(--white); line-height:1.15; margin-bottom:1.25rem; }
+    .hero h1 span { color:var(--green); }
+    .hero-sub { font-size:1.1rem; color:rgba(255,255,255,0.65); max-width:560px; margin-bottom:2.5rem; font-weight:300; }
+    .hero-tags { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:2.5rem; }
+    .tag { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.8); padding:0.35rem 0.85rem; border-radius:100px; font-size:0.78rem; font-weight:500; }
+    .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn-primary { background:var(--teal); color:var(--white); padding:0.75rem 1.75rem; border-radius:8px; text-decoration:none; font-weight:600; font-size:0.9rem; transition:background .2s,transform .15s; }
+    .btn-primary:hover { background:var(--green); transform:translateY(-1px); }
+    .btn-outline { border:1.5px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.85); padding:0.75rem 1.75rem; border-radius:8px; text-decoration:none; font-weight:500; font-size:0.9rem; transition:border-color .2s,color .2s; }
+    .btn-outline:hover { border-color:var(--white); color:var(--white); }
+
+    .stats { background:var(--navy); display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,0.08); }
+    .stat { padding:1.75rem 2rem; text-align:center; border-right:1px solid rgba(255,255,255,0.08); }
+    .stat:last-child { border-right:none; }
+    .stat-num { font-size:1.9rem; font-weight:700; color:var(--white); font-family:'DM Mono',monospace; }
+    .stat-num span { color:var(--green); }
+    .stat-label { font-size:0.75rem; color:rgba(255,255,255,0.45); margin-top:0.25rem; }
+
+    section { padding:5rem 2.5rem; }
+    .section-inner { max-width:1060px; margin:0 auto; }
+    .section-header { margin-bottom:3rem; }
+    .section-eyebrow { font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--teal); letter-spacing:0.1em; margin-bottom:0.75rem; }
+    .section-title { font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; color:var(--navy); line-height:1.2; }
+
+    #projets { background:var(--white); }
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(460px,1fr)); gap:1.75rem; }
+    .project-card { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:box-shadow .25s,transform .2s; }
+    .project-card:hover { box-shadow:0 12px 40px rgba(30,45,90,0.12); transform:translateY(-3px); }
+    .project-header { padding:1.5rem 1.75rem 1.25rem; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:1rem; }
+    .project-icon { width:46px; height:46px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0; }
+    .icon-blue { background:#EEF2FF; } .icon-teal { background:#E6F4F4; } .icon-green { background:#E6F7F4; } .icon-orange { background:#FEF3EA; }
+    .project-title { font-size:1.05rem; font-weight:700; color:var(--navy); margin-bottom:0.3rem; }
+    .project-sector { font-size:0.75rem; color:var(--gray); font-weight:500; }
+    .project-body { padding:1.25rem 1.75rem; }
+    .project-desc { font-size:0.875rem; color:var(--gray); margin-bottom:1.25rem; line-height:1.65; }
+    .project-kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:1.25rem; }
+    .kpi-box { background:var(--light); border-radius:8px; padding:0.65rem 0.75rem; text-align:center; }
+    .kpi-val { font-family:'DM Mono',monospace; font-size:0.95rem; font-weight:600; color:var(--navy); }
+    .kpi-lbl { font-size:0.65rem; color:var(--gray); margin-top:0.15rem; }
+    .project-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.25rem; }
+    .ptag { background:var(--light); color:var(--navy); border:1px solid var(--border); padding:0.25rem 0.65rem; border-radius:100px; font-size:0.72rem; font-weight:500; }
+    .project-footer { padding:1rem 1.75rem; border-top:1px solid var(--border); display:flex; gap:0.75rem; }
+    .project-link { display:flex; align-items:center; gap:0.4rem; font-size:0.8rem; font-weight:600; text-decoration:none; color:var(--teal); transition:color .2s; }
+    .project-link:hover { color:var(--navy); }
+    .project-link.live { background:var(--teal); color:var(--white); padding:0.4rem 1rem; border-radius:6px; transition:background .2s; }
+    .project-link.live:hover { background:var(--navy); color:var(--white); }
+
+    #stack { background:var(--light); }
+    .stack-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .stack-item { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:1.25rem 1.5rem; display:flex; align-items:center; gap:1rem; }
+    .stack-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .stack-name { font-size:0.88rem; font-weight:600; color:var(--navy); }
+    .stack-type { font-size:0.72rem; color:var(--gray); margin-top:0.1rem; }
+
+    #apropos { background:var(--white); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+    .about-text p { font-size:0.95rem; color:var(--gray); margin-bottom:1rem; line-height:1.75; }
+    .about-text strong { color:var(--navy); }
+    .diplomes { margin-top:1.5rem; }
+    .diplome { display:flex; gap:1rem; align-items:flex-start; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border); }
+    .diplome:last-child { border-bottom:none; }
+    .diplome-year { font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--teal); min-width:60px; padding-top:0.15rem; }
+    .diplome-title { font-size:0.88rem; font-weight:600; color:var(--navy); }
+    .diplome-school { font-size:0.78rem; color:var(--gray); margin-top:0.15rem; }
+    .contact-card { background:var(--navy); border-radius:14px; padding:2rem; color:var(--white); }
+    .contact-card h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+    .contact-card p { font-size:0.85rem; color:rgba(255,255,255,0.6); margin-bottom:1.5rem; }
+    .contact-links { display:flex; flex-direction:column; gap:0.75rem; }
+    .contact-link { display:flex; align-items:center; gap:0.75rem; color:rgba(255,255,255,0.85); text-decoration:none; font-size:0.85rem; font-weight:500; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); padding:0.75rem 1rem; border-radius:8px; transition:background .2s; }
+    .contact-link:hover { background:rgba(255,255,255,0.13); }
+
+    footer { background:var(--navy); text-align:center; padding:2rem; color:rgba(255,255,255,0.4); font-size:0.8rem; }
+    footer span { color:var(--green); }
+
+    @media(max-width:768px) {
+      nav { padding:0 1.25rem; } .nav-links { gap:1rem; }
+      section { padding:3.5rem 1.25rem; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .projects-grid { grid-template-columns:1fr; }
+      .about-grid { grid-template-columns:1fr; gap:2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">thierry_laguerre.github.io</div>
+  <div class="nav-links">
+    <a href="#projets">Projets</a>
+    <a href="#stack">Stack</a>
+    <a href="#apropos">À propos</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">DATA ANALYST JUNIOR · PARIS ÎLE-DE-FRANCE</div>
+    <h1>Thierry<br><span>Laguerre</span></h1>
+    <p class="hero-sub">Je transforme des données opérationnelles en insights actionnables — logistique, retail, e-commerce. Ancien facteur à La Poste, reconversion en Data Analyst.</p>
+    <div class="hero-tags">
+      <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span>
+      <span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">Google Sheets</span>
+      <span class="tag">DAX</span><span class="tag">Matplotlib</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projets" class="btn-primary">Voir mes projets</a>
+      <a href="https://www.linkedin.com/in/thierry-laguerre-ba1267257/" target="_blank" class="btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">4<span>+</span></div><div class="stat-label">Projets portfolio</div></div>
+  <div class="stat"><div class="stat-num">3<span>M+</span></div><div class="stat-label">Lignes analysées</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Stacks différentes</div></div>
+  <div class="stat"><div class="stat-num">2<span>ans</span></div><div class="stat-label">Formation Data</div></div>
+</div>
+
+<section id="projets">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">PORTFOLIO</div>
+      <h2 class="section-title">4 projets · 4 secteurs · 4 stacks</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-blue">📬</div>
+          <div>
+            <div class="project-title">Dashboard Suivi des Livraisons</div>
+            <div class="project-sector">La Poste · Paris 18ème · Logistique Postale</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Dashboard interactif pour piloter les KPIs de livraison sur 14 tournées du secteur CAP 18 — taux de distribution, 2ème présentation vs objectif ≥ 23%, saisonnalité. Données modélisées à partir d'une expérience terrain réelle de facteur.</p>
+          <div class="project-kpis">
+            <div class="kpi-box"><div class="kpi-val">95 818</div><div class="kpi-lbl">Objets analysés</div></div>
+            <div class="kpi-box"><div class="kpi-val">14</div><div class="kpi-lbl">Tournées</div></div>
+            <div class="kpi-box"><div class="kpi-val">53.8%</div><div class="kpi-lbl">Taux distribution</div></div>
+          </div>
+          <div class="project-tags">
+            <span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Plotly</span><span class="ptag">Streamlit</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://laposte-delivery-dashboard-kahpekuc54tr2x7yq9qzbw.streamlit.app/" target="_blank" class="project-link live">▶ Dashboard live</a>
+          <a href="https://github.com/thierrylaguerre/laposte-delivery-dashboard" target="_blank" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-teal">🚛</div>
+          <div>
+            <div class="project-title">Analyse Transport Routier</div>
+            <div class="project-sector">Logistique & Transport · SQL + Power BI</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Analyse des opérations d'une entreprise de transport routier — revenus clients, ponctualité des livraisons, performance chauffeurs, marges vs coûts carburant. Base SQLite 14 tables, dashboard Power BI 4 pages avec mesures DAX.</p>
+          <div class="project-kpis">
+            <div class="kpi-box"><div class="kpi-val">604M$</div><div class="kpi-lbl">Revenu total</div></div>
+            <div class="kpi-box"><div class="kpi-val">550K+</div><div class="kpi-lbl">Lignes SQL</div></div>
+            <div class="kpi-box"><div class="kpi-val">55.7%</div><div class="kpi-lbl">Ponctualité</div></div>
+          </div>
+          <div class="project-tags">
+            <span class="ptag">SQL</span><span class="ptag">SQLite</span><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">Python</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/thierrylaguerre/logistics-sql-powerbi" target="_blank" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-green">📦</div>
+          <div>
+            <div class="project-title">Suivi des Stocks Supply Chain</div>
+            <div class="project-sector">Logistique & Retail · Google Sheets</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Dashboard Google Sheets de suivi des stocks sur 5 entrepôts et 10 fournisseurs — 7 KPIs, 5 graphiques, système d'alertes automatiques 3 niveaux (🔴 rupture · 🟡 surstock · 🟢 normal) sur 91 250 lignes.</p>
+          <div class="project-kpis">
+            <div class="kpi-box"><div class="kpi-val">91K</div><div class="kpi-lbl">Lignes dataset</div></div>
+            <div class="kpi-box"><div class="kpi-val">9.6%</div><div class="kpi-lbl">Stock sous seuil</div></div>
+            <div class="kpi-box"><div class="kpi-val">8j</div><div class="kpi-lbl">Délai fournisseur</div></div>
+          </div>
+          <div class="project-tags">
+            <span class="ptag">Google Sheets</span><span class="ptag">AVERAGEIFS</span><span class="ptag">SUMPRODUCT</span><span class="ptag">Alertes auto</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/thierrylaguerre/supply-chain-sheets-dashboard" target="_blank" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-orange">🛒</div>
+          <div>
+            <div class="project-title">Analyse E-commerce ElecMart</div>
+            <div class="project-sector">Retail & E-commerce · Python · Jupyter</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Analyse complète des performances d'un e-commerce retail — entonnoir de conversion, segmentation device et source de trafic, fidélité clients, top produits par marge. 500K sessions · 1.8M transactions · 8 analyses.</p>
+          <div class="project-kpis">
+            <div class="kpi-box"><div class="kpi-val">2.4%</div><div class="kpi-lbl">Taux conversion</div></div>
+            <div class="kpi-box"><div class="kpi-val">884M€</div><div class="kpi-lbl">CA total</div></div>
+            <div class="kpi-box"><div class="kpi-val">18.7%</div><div class="kpi-lbl">Taux de marge</div></div>
+          </div>
+          <div class="project-tags">
+            <span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Matplotlib</span><span class="ptag">Seaborn</span><span class="ptag">Jupyter</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/thierrylaguerre/ecommerce-retail-analytics" target="_blank" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">COMPÉTENCES</div>
+      <h2 class="section-title">Stack technique</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="stack-dot" style="background:#3776AB"></div><div><div class="stack-name">Python</div><div class="stack-type">Pandas · Matplotlib · Seaborn</div></div></div>
+      <div class="stack-item"><div class="stack-dot" style="background:#F29111"></div><div><div class="stack-name">SQL</div><div class="stack-type">SQLite · DBeaver · Jointures</div></div></div>
+      <div class="stack-item"><div class="stack-dot" style="background:#F2C811"></div><div><div class="stack-name">Power BI</div><div class="stack-type">DAX · Dashboard · Segments</div></div></div>
+      <div class="stack-item"><div class="stack-dot" style="background:#FF4B4B"></div><div><div class="stack-name">Streamlit</div><div class="stack-type">Dashboards déployés en ligne</div></div></div>
+      <div class="stack-item"><div class="stack-dot" style="background:#0D7377"></div><div><div class="stack-name">Google Sheets</div><div class="stack-type">AVERAGEIFS · SUMPRODUCT · SI</div></div></div>
+      <div class="stack-item"><div class="stack-dot" style="background:#E8813A"></div><div><div class="stack-name">Plotly</div><div class="stack-type">Graphiques interactifs</div></div></div>
+      <div class="stack-item"><div class="stack-dot" style="background:#F37626"></div><div><div class="stack-name">Jupyter Notebook</div><div class="stack-type">Analyse exploratoire · EDA</div></div></div>
+      <div class="stack-item"><div class="stack-dot" style="background:#181717"></div><div><div class="stack-name">GitHub</div><div class="stack-type">Versioning · Portfolio</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="apropos">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">À PROPOS</div>
+      <h2 class="section-title">Parcours</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Facteur à <strong>La Poste Paris 18ème</strong> depuis plusieurs années, j'ai décidé de valoriser ma connaissance terrain en compétences Data Analyst. Ce qui me différencie des autres candidats juniors : je sais ce que les données représentent dans la réalité opérationnelle.</p>
+        <p>Mes projets ne partent pas de datasets abstraits — ils partent de vraies problématiques métier : piloter des objectifs de prime d'équipe, optimiser des stocks multi-entrepôts, analyser la rentabilité d'un parc de camions.</p>
+        <p>Je cible des postes <strong>DA junior en logistique, transport ou retail</strong> en Île-de-France, disponible immédiatement.</p>
+        <div class="diplomes">
+          <div class="diplome">
+            <div class="diplome-year">2024</div>
+            <div><div class="diplome-title">Master Big Data</div><div class="diplome-school">Université Paris 8</div></div>
+          </div>
+          <div class="diplome">
+            <div class="diplome-year">2023</div>
+            <div><div class="diplome-title">Licence Informatique</div><div class="diplome-school">Sorbonne Paris Nord</div></div>
+          </div>
+          <div class="diplome">
+            <div class="diplome-year">2024</div>
+            <div><div class="diplome-title">Stage Data Scientist</div><div class="diplome-school">Centre Dentaire · ARIMA, SARIMA, Prophet</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Me contacter</h3>
+        <p>Ouvert aux opportunités DA junior en Île-de-France — logistique, transport, retail.</p>
+        <div class="contact-links">
+          <a href="mailto:thierrylaguerre81@gmail.com" class="contact-link"><span>✉️</span> thierrylaguerre81@gmail.com</a>
+          <a href="https://www.linkedin.com/in/thierry-laguerre-ba1267257/" target="_blank" class="contact-link"><span>💼</span> linkedin.com/in/thierry-laguerre</a>
+          <a href="https://github.com/thierrylaguerre" target="_blank" class="contact-link"><span>💻</span> github.com/thierrylaguerre</a>
+          <a href="https://laposte-delivery-dashboard-kahpekuc54tr2x7yq9qzbw.streamlit.app/" target="_blank" class="contact-link"><span>▶️</span> Dashboard La Poste — live</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Thierry Laguerre</span> · Data Analyst Junior · Paris Île-de-France</p>
+</footer>
+
+</body>
+</html>
