@@ -11,43 +11,22 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 :root{
-  /* Surfaces — inversion claire du système Slash */
-  --canvas:#EDEDEF;        /* page */
-  --card:#FFFFFF;          /* cartes */
-  --panel:#F5F5F7;         /* panneaux */
-  --hairline:#DCDCE0;      /* bordures */
-  --hairline-2:#C9C9CF;    /* bordures marquées */
-
-  /* Texte */
-  --ink:#08080A;           /* titres, max contraste */
-  --bone:#2A2B31;          /* corps haute emphase */
-  --silver:#5E616E;        /* corps */
-  --fog:#777A88;           /* secondaire */
-  --ash:#9194A1;           /* méta */
-
-  /* Accent */
-  --copper:#B4763F;        /* cuivre lisible sur clair */
-  --copper-soft:#CC9166;   /* cuivre décoratif */
-
+  --canvas:#EDEDEF; --card:#FFFFFF; --panel:#F5F5F7;
+  --hairline:#DCDCE0; --hairline-2:#C9C9CF;
+  --ink:#08080A; --bone:#2A2B31; --silver:#5E616E; --fog:#777A88; --ash:#9194A1;
+  --copper:#B4763F; --copper-soft:#CC9166;
   --r-card:10px; --r-pill:9999px; --r-nav:2px;
   --max:1216px;
 }
 
 html{scroll-behavior:smooth;}
-body{
-  font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
-  background:var(--canvas); color:var(--silver);
-  font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
-}
-.serif{font-family:'Playfair Display',Georgia,serif;letter-spacing:0.01em;font-weight:400;}
+body{font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--canvas);
+  color:var(--silver);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
 
-/* ── NAV ───────────────────────────────────────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(237,237,239,0.82);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--hairline);
-  height:64px;display:flex;align-items:center;
-}
+  border-bottom:1px solid var(--hairline);height:64px;display:flex;align-items:center;}
 .nav-inner{max-width:var(--max);margin:0 auto;width:100%;padding:0 40px;
   display:flex;align-items:center;justify-content:space-between;}
 .nav-mark{font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);letter-spacing:0.01em;}
@@ -60,18 +39,17 @@ nav{
   padding:10px 20px;border-radius:var(--r-pill);text-decoration:none;transition:opacity .18s;}
 .nav-cta:hover{opacity:.85;}
 
-/* ── HERO ──────────────────────────────────────── */
+/* HERO */
 .hero{padding:200px 40px 120px;max-width:var(--max);margin:0 auto;}
-.eyebrow{font-size:13px;font-weight:600;letter-spacing:-0.02em;color:var(--copper);
-  margin-bottom:28px;}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:-0.02em;color:var(--copper);margin-bottom:28px;}
 .hero h1{font-family:'Playfair Display',serif;font-weight:400;
   font-size:clamp(48px,7.5vw,88px);line-height:1.0;letter-spacing:0.01em;
-  color:var(--ink);margin-bottom:32px;max-width:14ch;}
+  color:var(--ink);margin-bottom:32px;max-width:15ch;}
 .hero h1 i{font-style:italic;color:var(--copper);}
 .hero-lead{font-size:20px;font-weight:300;line-height:1.38;letter-spacing:-0.04em;
   color:var(--silver);max-width:56ch;margin-bottom:44px;}
 .hero-lead b{font-weight:500;color:var(--ink);}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .btn-solid{background:var(--ink);color:#fff;font-size:14px;font-weight:500;
   padding:12px 24px;border-radius:var(--r-pill);text-decoration:none;transition:opacity .18s;}
 .btn-solid:hover{opacity:.85;}
@@ -79,75 +57,40 @@ nav{
   padding:12px 24px;border-radius:var(--r-pill);text-decoration:none;
   border:1px solid var(--hairline-2);transition:border-color .18s;}
 .btn-line:hover{border-color:var(--ink);}
-.chips{display:flex;flex-wrap:wrap;gap:8px;}
-.chip{font-size:13px;color:var(--fog);border:1px solid var(--hairline-2);
-  padding:6px 14px;border-radius:var(--r-pill);}
 
-/* ── STATS ─────────────────────────────────────── */
-.stats{border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
-.stats-inner{max-width:var(--max);margin:0 auto;padding:0 40px;
-  display:grid;grid-template-columns:repeat(4,1fr);}
-.stat{padding:40px 0;border-right:1px solid var(--hairline);}
-.stat:last-child{border-right:none;}
-.stat:not(:first-child){padding-left:32px;}
-.stat-n{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;
-  color:var(--ink);letter-spacing:0.01em;line-height:1;}
-.stat-n i{font-style:normal;color:var(--copper);font-size:28px;}
-.stat-c{font-size:14px;color:var(--ash);margin-top:10px;}
-
-/* ── SECTIONS ──────────────────────────────────── */
+/* SECTIONS */
 section{padding:120px 40px;}
 .wrap{max-width:var(--max);margin:0 auto;}
-.sec-eyebrow{font-size:13px;font-weight:600;letter-spacing:-0.02em;
-  color:var(--copper);margin-bottom:20px;}
+.sec-eyebrow{font-size:13px;font-weight:600;letter-spacing:-0.02em;color:var(--copper);margin-bottom:20px;}
 .sec-title{font-family:'Playfair Display',serif;font-weight:400;font-size:52px;
   line-height:1.13;letter-spacing:0.01em;color:var(--ink);margin-bottom:16px;}
 .sec-sub{font-size:18px;font-weight:300;letter-spacing:-0.02em;color:var(--fog);
-  max-width:52ch;margin-bottom:64px;}
+  max-width:54ch;margin-bottom:64px;}
 
-/* ── PROJETS ───────────────────────────────────── */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
+/* PROJETS */
+#projets{border-top:1px solid var(--hairline);}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .card{background:var(--card);border-radius:var(--r-card);padding:32px;
-  transition:transform .2s ease, box-shadow .2s ease;}
+  display:flex;flex-direction:column;transition:transform .2s ease, box-shadow .2s ease;}
 .card:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(8,8,10,0.07);}
-.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
-.card-cat{font-size:13px;font-weight:600;letter-spacing:-0.02em;color:var(--copper);}
-.card-state{font-size:12px;color:var(--fog);border:1px solid var(--hairline-2);
-  padding:4px 12px;border-radius:var(--r-pill);}
-.card-state.on{color:var(--copper);border-color:var(--copper-soft);}
-.card h3{font-family:'Playfair Display',serif;font-weight:400;font-size:28px;
-  line-height:1.2;letter-spacing:0.01em;color:var(--ink);margin-bottom:10px;}
-.card-meta{font-size:14px;color:var(--ash);margin-bottom:20px;}
-.card-p{font-size:16px;line-height:1.5;color:var(--silver);margin-bottom:28px;}
+.card-cat{font-size:13px;font-weight:600;letter-spacing:-0.02em;color:var(--copper);margin-bottom:20px;}
+.card h3{font-family:'Playfair Display',serif;font-weight:400;font-size:26px;
+  line-height:1.2;letter-spacing:0.01em;color:var(--ink);margin-bottom:16px;}
+.card-p{font-size:15px;line-height:1.55;color:var(--silver);margin-bottom:28px;flex:1;}
 .card-p b{font-weight:500;color:var(--bone);}
-.figs{display:flex;gap:32px;padding:24px 0;
+.figs{display:flex;gap:24px;padding:20px 0;
   border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin-bottom:24px;}
 .fig{flex:1;}
-.fig-n{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;
+.fig-n{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;
   color:var(--ink);letter-spacing:0.01em;line-height:1;}
-.fig-c{font-size:13px;color:var(--ash);margin-top:8px;}
-.tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
-.tool{font-size:12px;color:var(--fog);border:1px solid var(--hairline-2);
-  padding:4px 12px;border-radius:var(--r-pill);}
+.fig-c{font-size:12px;color:var(--ash);margin-top:6px;}
 .card-links{display:flex;gap:12px;align-items:center;}
 .lnk-solid{background:var(--ink);color:#fff;font-size:14px;font-weight:500;
   padding:10px 20px;border-radius:var(--r-pill);text-decoration:none;transition:opacity .18s;}
 .lnk-solid:hover{opacity:.85;}
-.lnk{color:var(--fog);font-size:14px;font-weight:500;text-decoration:none;
-  padding:10px 4px;transition:color .18s;}
-.lnk:hover{color:var(--ink);}
 
-/* ── STACK ─────────────────────────────────────── */
-#stack{background:var(--panel);border-top:1px solid var(--hairline);}
-.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px;}
-.tool-row{display:flex;align-items:baseline;justify-content:space-between;
-  padding:22px 0;border-bottom:1px solid var(--hairline);}
-.tool-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;
-  color:var(--ink);letter-spacing:0.01em;}
-.tool-desc{font-size:14px;color:var(--ash);text-align:right;max-width:24ch;}
-
-/* ── PARCOURS ──────────────────────────────────── */
-#parcours{border-top:1px solid var(--hairline);}
+/* PARCOURS */
+#parcours{background:var(--panel);border-top:1px solid var(--hairline);}
 .two-col{display:grid;grid-template-columns:1.1fr 0.9fr;gap:96px;align-items:start;}
 .prose p{font-size:18px;font-weight:300;line-height:1.56;letter-spacing:-0.02em;
   color:var(--silver);margin-bottom:20px;}
@@ -172,22 +115,17 @@ section{padding:120px 40px;}
 .clink:hover{border-color:var(--ink);color:var(--ink);}
 .clink span:last-child{color:var(--copper);font-size:14px;}
 
-/* ── FOOTER ────────────────────────────────────── */
 footer{border-top:1px solid var(--hairline);padding:40px;}
 .foot{max-width:var(--max);margin:0 auto;display:flex;
   align-items:center;justify-content:space-between;}
 .foot-l{font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);letter-spacing:0.01em;}
 .foot-r{font-size:14px;color:var(--ash);}
 
-/* ── RESPONSIVE ────────────────────────────────── */
 @media(max-width:900px){
-  .nav-inner,.stats-inner,.foot{padding-left:20px;padding-right:20px;}
+  .nav-inner,.foot{padding-left:20px;padding-right:20px;}
   .hero{padding:140px 20px 80px;}
   section{padding:80px 20px;}
-  .stats-inner{grid-template-columns:repeat(2,1fr);}
-  .stat{border-right:none;border-bottom:1px solid var(--hairline);padding:28px 0;}
-  .stat:not(:first-child){padding-left:0;}
-  .grid,.tools-grid,.two-col{grid-template-columns:1fr;gap:24px;}
+  .grid,.two-col{grid-template-columns:1fr;gap:24px;}
   .sec-title{font-size:38px;}
   .foot{flex-direction:column;gap:12px;text-align:center;}
 }
@@ -201,127 +139,70 @@ footer{border-top:1px solid var(--hairline);padding:40px;}
     <div class="nav-mark">Thierry Laguerre<i>.</i></div>
     <div class="nav-menu">
       <a href="#projets">Projets</a>
-      <a href="#stack">Stack</a>
       <a href="#parcours">Parcours</a>
     </div>
     <a href="mailto:thierrylaguerre81@gmail.com" class="nav-cta">Me contacter</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="eyebrow">Data Analyst Junior · Paris Île-de-France</div>
-  <h1>La donnée vue<br>depuis <i>le terrain</i>.</h1>
+  <h1>Transformer un chiffre<br>en <i>décision</i>.</h1>
   <p class="hero-lead">
-    Facteur à La Poste Paris 18ème, je construis mes analyses à partir de problématiques
-    que j'ai vécues. <b>Pas de datasets génériques</b> — des KPIs que je sais lire parce que
-    je connais ce qu'ils coûtent en opérations.
+    Trois analyses qui partent d'une question métier et se terminent par une recommandation
+    applicable. <b>Logistique, supply chain, e-commerce.</b>
   </p>
   <div class="hero-actions">
     <a href="#projets" class="btn-solid">Voir les projets</a>
     <a href="https://www.linkedin.com/in/thierry-laguerre-ba1267257/" target="_blank" rel="noopener" class="btn-line">LinkedIn</a>
     <a href="https://github.com/thierrylaguerre" target="_blank" rel="noopener" class="btn-line">GitHub</a>
   </div>
-  <div class="chips">
-    <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span>
-    <span class="chip">Pandas</span><span class="chip">Streamlit</span><span class="chip">DAX</span>
-    <span class="chip">Google Sheets</span><span class="chip">Matplotlib</span><span class="chip">Jupyter</span>
-  </div>
 </div>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-n">4</div><div class="stat-c">Projets portfolio</div></div>
-    <div class="stat"><div class="stat-n">3<i>M+</i></div><div class="stat-c">Lignes analysées</div></div>
-    <div class="stat"><div class="stat-n">4</div><div class="stat-c">Stacks maîtrisées</div></div>
-    <div class="stat"><div class="stat-n">Bac<i>+5</i></div><div class="stat-c">Master Big Data, Paris 8</div></div>
-  </div>
-</div>
-
-<!-- PROJETS -->
 <section id="projets">
   <div class="wrap">
-    <div class="sec-eyebrow">Portfolio</div>
-    <h2 class="sec-title">Quatre secteurs,<br>quatre stacks.</h2>
-    <p class="sec-sub">Chaque projet part d'une question métier précise et se termine par une recommandation qu'une équipe pourrait appliquer lundi matin.</p>
+    <div class="sec-eyebrow">Projets</div>
+    <h2 class="sec-title">Trois analyses,<br>trois secteurs.</h2>
+    <p class="sec-sub">Chacune part d'une question précise et se termine par une recommandation qu'une équipe pourrait appliquer.</p>
 
     <div class="grid">
 
       <article class="card">
-        <div class="card-top">
-          <span class="card-cat">Logistique postale</span>
-          <span class="card-state on">En ligne</span>
-        </div>
-        <h3>Suivi des livraisons</h3>
-        <div class="card-meta">La Poste · Paris 18ème · Îlot CAP 18</div>
-        <p class="card-p">Pilotage des KPIs sur 14 tournées. Le dataset est modélisé à partir de ce que je vois chaque jour : formats de tracking, statuts réels, écarts entre zones résidentielles et zones d'entreprises. <b>5 mois sur 6 sous l'objectif de 23%</b> de 2ème présentation — soit la prime d'équipe qui saute.</p>
+        <div class="card-cat">Transport routier</div>
+        <h3>Rentabilité et ponctualité d'une flotte</h3>
+        <p class="card-p">Revenus clients, performance chauffeurs et marge nette des coûts carburant sur trois ans d'exploitation. <b>Moins d'une livraison sur deux arrive à l'heure</b> — l'analyse identifie les routes qui tirent la moyenne vers le bas.</p>
         <div class="figs">
-          <div class="fig"><div class="fig-n">95 818</div><div class="fig-c">Objets postaux</div></div>
-          <div class="fig"><div class="fig-n">14</div><div class="fig-c">Tournées</div></div>
-          <div class="fig"><div class="fig-n">53,8%</div><div class="fig-c">Distribution</div></div>
-        </div>
-        <div class="tools"><span class="tool">Python</span><span class="tool">Pandas</span><span class="tool">Plotly</span><span class="tool">Streamlit</span></div>
-        <div class="card-links">
-          <a href="https://laposte-delivery-dashboard-kahpekuc54tr2x7yq9qzbw.streamlit.app/" target="_blank" rel="noopener" class="lnk-solid">Ouvrir le dashboard</a>
-          <a href="https://github.com/thierrylaguerre/laposte-delivery-dashboard" target="_blank" rel="noopener" class="lnk">Code</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-top">
-          <span class="card-cat">Transport routier</span>
-          <span class="card-state">Power BI</span>
-        </div>
-        <h3>Rentabilité d'une flotte</h3>
-        <div class="card-meta">SQL · Power BI · DAX · 14 tables</div>
-        <p class="card-p">Revenus clients, ponctualité, performance chauffeurs, marge nette des coûts carburant. Base SQLite construite depuis zéro, requêtes multi-jointures, dashboard en quatre pages. <b>Le taux de ponctualité plafonne à 55,7%</b> — moins d'une livraison sur deux arrive à l'heure.</p>
-        <div class="figs">
-          <div class="fig"><div class="fig-n">604M$</div><div class="fig-c">Revenu analysé</div></div>
-          <div class="fig"><div class="fig-n">550K</div><div class="fig-c">Lignes SQL</div></div>
+          <div class="fig"><div class="fig-n">550K</div><div class="fig-c">Lignes</div></div>
           <div class="fig"><div class="fig-n">55,7%</div><div class="fig-c">Ponctualité</div></div>
         </div>
-        <div class="tools"><span class="tool">SQL</span><span class="tool">SQLite</span><span class="tool">Power BI</span><span class="tool">DAX</span><span class="tool">Python</span></div>
         <div class="card-links">
-          <a href="https://github.com/thierrylaguerre/logistics-sql-powerbi" target="_blank" rel="noopener" class="lnk-solid">Voir le projet</a>
+          <a href="https://github.com/thierrylaguerre/logistics-sql-powerbi" target="_blank" rel="noopener" class="lnk-solid">Voir l'analyse</a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-top">
-          <span class="card-cat">Supply chain</span>
-          <span class="card-state">Google Sheets</span>
-        </div>
-        <h3>Alertes de stock</h3>
-        <div class="card-meta">5 entrepôts · 10 fournisseurs · 91 250 lignes</div>
-        <p class="card-p">Un système d'alertes à trois niveaux qui détecte les ruptures avant qu'elles n'arrivent, et les surstocks avant qu'ils n'immobilisent du capital. <b>SUP_4 livre 1,7 jour plus lentement que SUP_5</b> — de quoi ouvrir une renégociation.</p>
+        <div class="card-cat">Supply chain</div>
+        <h3>Anticiper les ruptures de stock</h3>
+        <p class="card-p">Détection des risques de rupture et de surstock sur un réseau de cinq entrepôts et dix fournisseurs. <b>Un fournisseur livre 1,7 jour plus lentement que le meilleur</b> — de quoi ouvrir une renégociation.</p>
         <div class="figs">
           <div class="fig"><div class="fig-n">91 250</div><div class="fig-c">Lignes</div></div>
-          <div class="fig"><div class="fig-n">9,6%</div><div class="fig-c">Sous seuil</div></div>
-          <div class="fig"><div class="fig-n">8 j</div><div class="fig-c">Délai moyen</div></div>
+          <div class="fig"><div class="fig-n">5</div><div class="fig-c">Entrepôts</div></div>
         </div>
-        <div class="tools"><span class="tool">Google Sheets</span><span class="tool">AVERAGEIFS</span><span class="tool">SUMPRODUCT</span><span class="tool">SI imbriqués</span></div>
         <div class="card-links">
-          <a href="https://github.com/thierrylaguerre/supply-chain-sheets-dashboard" target="_blank" rel="noopener" class="lnk-solid">Voir le projet</a>
+          <a href="https://github.com/thierrylaguerre/supply-chain-sheets-dashboard" target="_blank" rel="noopener" class="lnk-solid">Voir l'analyse</a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-top">
-          <span class="card-cat">E-commerce retail</span>
-          <span class="card-state">Jupyter</span>
-        </div>
-        <h3>Tunnel de conversion</h3>
-        <div class="card-meta">500K sessions · 1,8M transactions · 8 analyses</div>
-        <p class="card-p">Comportement visiteurs et rentabilité produit sur un e-commerce électronique. <b>Le desktop convertit 57% mieux que le mobile</b> alors que le mobile fait 45% du trafic — et 74% des paniers sont abandonnés. Cinq recommandations chiffrées en sortie.</p>
+        <div class="card-cat">E-commerce</div>
+        <h3>Où le tunnel de conversion perd ses clients</h3>
+        <p class="card-p">Comportement des visiteurs et rentabilité produit sur 500 000 sessions. <b>Le desktop convertit 57% mieux que le mobile</b>, qui représente pourtant 45% du trafic.</p>
         <div class="figs">
           <div class="fig"><div class="fig-n">500K</div><div class="fig-c">Sessions</div></div>
-          <div class="fig"><div class="fig-n">884M€</div><div class="fig-c">CA analysé</div></div>
           <div class="fig"><div class="fig-n">2,4%</div><div class="fig-c">Conversion</div></div>
         </div>
-        <div class="tools"><span class="tool">Python</span><span class="tool">Pandas</span><span class="tool">Matplotlib</span><span class="tool">Seaborn</span><span class="tool">Jupyter</span></div>
         <div class="card-links">
-          <a href="https://github.com/thierrylaguerre/ecommerce-retail-analytics" target="_blank" rel="noopener" class="lnk-solid">Voir le projet</a>
+          <a href="https://github.com/thierrylaguerre/ecommerce-retail-analytics" target="_blank" rel="noopener" class="lnk-solid">Voir l'analyse</a>
         </div>
       </article>
 
@@ -329,35 +210,15 @@ footer{border-top:1px solid var(--hairline);padding:40px;}
   </div>
 </section>
 
-<!-- STACK -->
-<section id="stack">
-  <div class="wrap">
-    <div class="sec-eyebrow">Compétences</div>
-    <h2 class="sec-title">Ce que j'utilise.</h2>
-    <p class="sec-sub">Chaque outil a servi sur au moins un projet livré, pas seulement en tutoriel.</p>
-    <div class="tools-grid">
-      <div class="tool-row"><span class="tool-name">Python</span><span class="tool-desc">Pandas, Matplotlib, Seaborn, Plotly</span></div>
-      <div class="tool-row"><span class="tool-name">SQL</span><span class="tool-desc">SQLite, DBeaver, jointures multi-tables</span></div>
-      <div class="tool-row"><span class="tool-name">Power BI</span><span class="tool-desc">DAX, mesures, dashboards multi-pages</span></div>
-      <div class="tool-row"><span class="tool-name">Streamlit</span><span class="tool-desc">Applications déployées en production</span></div>
-      <div class="tool-row"><span class="tool-name">Google Sheets</span><span class="tool-desc">AVERAGEIFS, SUMPRODUCT, SI imbriqués</span></div>
-      <div class="tool-row"><span class="tool-name">Jupyter</span><span class="tool-desc">Analyse exploratoire, restitution</span></div>
-      <div class="tool-row"><span class="tool-name">Plotly</span><span class="tool-desc">Visualisations interactives</span></div>
-      <div class="tool-row"><span class="tool-name">GitHub</span><span class="tool-desc">Versioning, documentation, portfolio</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PARCOURS -->
 <section id="parcours">
   <div class="wrap">
     <div class="sec-eyebrow">Parcours</div>
-    <h2 class="sec-title">Du terrain<br>à la donnée.</h2>
+    <h2 class="sec-title">Qui je suis.</h2>
     <div class="two-col">
       <div class="prose">
-        <p>Je suis facteur à <b>La Poste Paris 18ème</b>, sur les tournées TL-1472 et TL-2472. Tous les jours je manipule les données que la plupart des analystes ne voient que sous forme de tableau.</p>
-        <p>Quand je regarde un taux de 2ème présentation à 22,6%, je ne vois pas un chiffre. Je vois une équipe qui perd sa prime quadrimestrielle, et je sais pourquoi : le volume de décembre, les interphones qui ne répondent pas, les tournées surchargées.</p>
-        <p>C'est ça que je veux apporter à une équipe data : la capacité à traduire un chiffre en réalité opérationnelle, et l'inverse. Je cherche un poste de <b>Data Analyst junior en logistique, transport ou retail</b> en Île-de-France.</p>
+        <p>Je travaille dans la distribution du dernier kilomètre en Île-de-France, et je suis en reconversion vers l'analyse de données.</p>
+        <p>Ce que j'apporte, c'est l'habitude de regarder un indicateur en sachant ce qu'il coûte à ceux qui le produisent. <b>Un taux qui baisse d'un point, ce n'est pas une ligne dans un tableau</b> — c'est une organisation qui change quelque part.</p>
+        <p>Je cherche un poste de <b>Data Analyst junior en logistique, transport ou retail</b> en Île-de-France. Disponible immédiatement.</p>
         <div class="ledger">
           <div class="ledger-row">
             <span class="ledger-y">2024</span>
@@ -365,15 +226,11 @@ footer{border-top:1px solid var(--hairline);padding:40px;}
           </div>
           <div class="ledger-row">
             <span class="ledger-y">2024</span>
-            <div><div class="ledger-t">Stage Data Scientist</div><div class="ledger-s">Centre dentaire — prévision de consultations, ARIMA / SARIMA / Prophet</div></div>
+            <div><div class="ledger-t">Stage Data Scientist</div><div class="ledger-s">Prévision de flux de consultations — ARIMA, SARIMA, Prophet</div></div>
           </div>
           <div class="ledger-row">
             <span class="ledger-y">2023</span>
             <div><div class="ledger-t">Licence Informatique</div><div class="ledger-s">Sorbonne Paris Nord</div></div>
-          </div>
-          <div class="ledger-row">
-            <span class="ledger-y">Auj.</span>
-            <div><div class="ledger-t">Facteur — La Poste</div><div class="ledger-s">Paris 18ème, Îlot CAP 18 — tournées TL-1472 et TL-2472</div></div>
           </div>
         </div>
       </div>
@@ -385,7 +242,6 @@ footer{border-top:1px solid var(--hairline);padding:40px;}
           <a href="mailto:thierrylaguerre81@gmail.com" class="clink"><span>thierrylaguerre81@gmail.com</span><span>Email</span></a>
           <a href="https://www.linkedin.com/in/thierry-laguerre-ba1267257/" target="_blank" rel="noopener" class="clink"><span>Thierry Laguerre</span><span>LinkedIn</span></a>
           <a href="https://github.com/thierrylaguerre" target="_blank" rel="noopener" class="clink"><span>thierrylaguerre</span><span>GitHub</span></a>
-          <a href="https://laposte-delivery-dashboard-kahpekuc54tr2x7yq9qzbw.streamlit.app/" target="_blank" rel="noopener" class="clink"><span>Dashboard La Poste</span><span>Démo</span></a>
         </div>
       </aside>
     </div>
@@ -395,7 +251,7 @@ footer{border-top:1px solid var(--hairline);padding:40px;}
 <footer>
   <div class="foot">
     <div class="foot-l">Thierry Laguerre</div>
-    <div class="foot-r">Data Analyst Junior · Paris Île-de-France · 2025</div>
+    <div class="foot-r">Data Analyst Junior · Paris Île-de-France</div>
   </div>
 </footer>
 
